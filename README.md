@@ -24,7 +24,7 @@
 
 <h3>Requisitos</h3>
 
-Para rodar este projeto na sua máquina será necessária que tenha instalado NodeJS para realizar a instalação das dependências e GIT para clonar este repositório.
+Para rodar este projeto na sua máquina será necessária que tenha instalado NodeJS e GIT para clonar este repositório.
 
 - [NodeJS](https://nodejs.org/pt)
 - [GIT](https://git-scm.com/downloads)
