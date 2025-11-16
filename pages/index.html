@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identificação de Usuário</title>
+    <title>Login - Gerenciador de Perfil</title>
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 <body>
-    <script src="../js/script.js"></script>
+    <div id="card">
+    <h1 id="card-title">Entrar</h1>
+    <label id="label" for="userId">ID do usuário (ex: chico, maria)</label>
+    <input id="userId" type="text" placeholder="Digite seu ID" />
+    <button onclick="entrar()">Entrar</button>
+     <div class="hint">
+      Se você ainda não tem dados, ao clicar em entrar e depois em "Cadastrar" na página de perfil, os dados serão salvos.
+    </div>
+    <div class="small">
+      <span>Testes: use IDs como <strong>chico</strong>, <strong>maria</strong>, <strong>joao</strong></span>
+      <button class="link" onclick="criarExemplos()">Gerar exemplos</button>
+    </div>
+  </div>
+  </div>
+    <script src="../js/script.js" defer></script>
 </body>
 </html>
