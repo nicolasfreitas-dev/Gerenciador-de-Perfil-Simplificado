@@ -3,10 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <title>Perfil de Usuário</title>
     <link rel="stylesheet" href="../styles/perfil.css">
 </head>
-<body>
-    <script src="../js/script.js"></script>
+<body onload="iniciarPerfil()">
+  <div class="sair-container">
+    <button onclick="sair()">Sair</button>
+  </div>
+  <div class="container">
+    <div class="panel">
+      <h3>Editar Perfil</h3>
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" placeholder="Nome completo" />
+      <label for="idade">Idade</label>
+      <input id="idade" type="number" min="0" placeholder="Idade (ex: 30)" />
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="seu@exemplo.com" />
+      <label for="tema">Tema</label>
+      <select id="tema" onchange="mudarTema()">
+        <option value="light">Claro</option>
+        <option value="dark">Escuro</option>
+      </select>
+      <label for="corFonte">Cor da fonte</label>
+      <select id="corFonte" onchange="mudarTema()">
+        <option value="#111827">Padrão (preto)</option>
+        <option value="#FF0000">Vermelho</option>
+        <option value="#0ea5a4">Ciano</option>
+        <option value="#065f46">Verde</option>
+        <option value="#7c3aed">Roxo</option>
+      </select>
+      <label for="fotoSelect">Foto (selecione uma das imagens)</label>
+      <select id="fotoSelect">
+        <option value="../pictures/default.png">default.png</option>
+        <option value="../pictures/chico.jpg">chico.jpg</option>
+        <option value="../pictures/maria.jpg">maria.jpg</option>
+        <option value="../pictures/joao.jpg">joao.jpg</option>
+      </select>
+      <button onclick="cadastrar()">Salvar / Cadastrar</button>
+    </div>
+    <div class="panel card-profile" id="card">
+      <img id="fotoPerfil" src="../pictures/default.png" alt="Foto do usuário" />
+      <h2 id="displayNome">—</h2>
+      <p id="displayEmail">—</p>
+      <p id="displayIdade">— anos</p>
+    </div>
+  </div>
+    <script src="../js/script.js" defer></script>
 </body>
 </html>
