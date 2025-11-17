@@ -1,4 +1,4 @@
-function entrar(){
+function entrar() {
   const input = document.getElementById('userId');
   const id = input && input.value.trim();
 
@@ -10,69 +10,28 @@ function entrar(){
 
   localStorage.setItem('currentUserId', id);
 
-  window.location.href = 'perfil.html';
+  window.location.href = '../pages/perfil.html';
 }
 
-function iniciarPerfil(){
+function iniciarPerfil() {
   const current = localStorage.getItem('currentUserId');
 
   if (!current) {
-    // Se não estiver logado, volta para a página de login
-    window.location.href = 'index.html';
+    window.location.href = '../pages/index.html';
 
     return;
   }
 
-  // Carrega os dados do usuário logado
   carregarDadosDoUsuario(current);
 }
 
-function aplicarPerfilVazio(){
-  // Aplica valores padrão/vazios nos inputs (usado quando não há dados gravados)
-  const campos = ['nome','idade','email','tema','corFonte','fotoSelect'];
-
-  campos.forEach(campo => {
-    const element = document.getElementById(campo);
-    if (!element) return;
-
-    if (campo === 'tema') {
-      element.value = 'light';
-    } else if (campo === 'corFonte') {
-      element.value = '#111827';
-    } else if (campo === 'fotoSelect') {
-      element.value = 'default.png';
-    } else {
-      element.value = '';
-    }
-  });
-
-  const fotoPerfil = document.getElementById('fotoPerfil');
-
-  if (fotoPerfil) fotoPerfil.src = '../pictures/default.png';
-
-  const displayNome = document.getElementById('displayNome');
-  const displayEmail = document.getElementById('displayEmail');
-  const displayIdade = document.getElementById('displayIdade');
-
-  if (displayNome) displayNome.innerText = '—';
-  if (displayEmail) displayEmail.innerText = '—';
-  if (displayIdade) displayIdade.innerText = '— anos';
-
-  document.body.classList.remove('dark-theme');
-
-  const card = document.getElementById('card');
-
-  if (card) card.style.color = '';
-}
-
-/* Carrega do localStorage (cada chave separada) e popula inputs e cartão */
-function carregarDadosDoUsuario(id){
+function carregarDadosDoUsuario(id) {
   const nome = localStorage.getItem(id + '_nome') || '';
   const idade = localStorage.getItem(id + '_idade') || '';
   const email = localStorage.getItem(id + '_email') || '';
   const tema = localStorage.getItem(id + '_tema') || 'light';
-  const cor = localStorage.getItem(id + '_cor_fonte') || '#111827';
-  const foto = (localStorage.getItem(id + '_foto') || 'default.png').split('/').pop();
+  const corDaFonte = localStorage.getItem(id + '_cor_fonte') || '#111827';
+  const foto = (localStorage.getItem(id + '_foto') || '../pictures/default.png').split('/').pop();
 
   const nomeElement = document.getElementById('nome');
   const idadeElement = document.getElementById('idade');
@@ -85,7 +44,7 @@ function carregarDadosDoUsuario(id){
   if (idadeElement) idadeElement.value = idade;
   if (emailElement) emailElement.value = email;
   if (temaElement) temaElement.value = tema;
-  if (corElement) corElement.value = cor;
+  if (corElement) corElement.value = corDaFonte;
   if (fotoSelect) fotoSelect.value = foto;
 
   const fotoPerfil = document.getElementById('fotoPerfil');
@@ -109,16 +68,15 @@ function carregarDadosDoUsuario(id){
 
   const card = document.getElementById('card');
 
-  if (card) card.style.color = cor;
+  if (card) card.style.color = corDaFonte;
 }
 
-/* chamado nos selects de tema e cor para aplicar mudanças imediatamente (sem salvar) */
-function mudarTema(){
+function mudarTema() {
   const temaElement = document.getElementById('tema');
   const corElement = document.getElementById('corFonte');
 
   const tema = temaElement ? temaElement.value : 'light';
-  const cor = corElement ? corElement.value : '#111827';
+  const corDaFonte = corElement ? corElement.value : '#111827';
 
   if (tema === 'dark') {
     document.body.classList.add('dark-theme');
@@ -128,27 +86,18 @@ function mudarTema(){
 
   const card = document.getElementById('card');
 
-  if (card) card.style.color = cor;
+  if (card) card.style.color = corDaFonte;
 }
 
-/* salvar todos os campos — usa prefixo currentUserId */
-function cadastrar(){
+function cadastrar() {
   const id = localStorage.getItem('currentUserId');
-
-  if (!id) {
-    alert('Usuário não identificado. Volte para a tela de login.');
-
-    window.location.href = 'index.html';
-
-    return;
-  }
 
   const nome = document.getElementById('nome').value.trim();
   const idade = String(document.getElementById('idade').value).trim();
   const email = document.getElementById('email').value.trim();
   const tema = document.getElementById('tema').value;
   const cor = document.getElementById('corFonte').value;
-  const foto = (document.getElementById('fotoSelect').value || 'default.png').split('/').pop();
+  const foto = (document.getElementById('fotoSelect').value || '../pictures/default.png').split('/').pop();
 
   localStorage.setItem(id + '_nome', nome);
   localStorage.setItem(id + '_idade', idade);
@@ -162,16 +111,14 @@ function cadastrar(){
   alert('Dados salvos com sucesso!');
 }
 
-/* logout conforme especificado */
 function sair() {
   alert('Volte Sempre!');
 
   localStorage.removeItem('currentUserId');
 
-  window.location.href = 'index.html';
+  window.location.href = '../pages/index.html';
 }
 
-/* Função de testes para popular 3 usuários de exemplo */
 function criarExemplos() {
   localStorage.setItem('chico_nome', 'Chico Silva');
   localStorage.setItem('chico_idade', '30');

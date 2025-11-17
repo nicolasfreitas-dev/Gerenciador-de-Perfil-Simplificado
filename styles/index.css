@@ -82,7 +82,7 @@ button {
     color:#374151
 }
 
-.small {
+.example-text {
     display:flex;
     gap:8px;
     margin-top:12px;
@@ -93,7 +93,7 @@ button {
     color:#6b7280;
 }
 
-.link {
+.example-link {
     background:transparent;
     border:0;
     color:var(--accent);
